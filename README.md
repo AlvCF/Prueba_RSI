@@ -1,4 +1,5 @@
 prueba_RSI
+
 How to run script:
 
 ruby main.rb
