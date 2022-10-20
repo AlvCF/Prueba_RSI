@@ -1,22 +1,26 @@
-require_relative "./clases/banco"
-require_relative "./clases/cuenta"
+require_relative "./lib/bank"
+require_relative "./lib/account"
 
 
-banco_primero = Banco.new("Palencia")
+first_bank = Bank.new("Palencia")
 
-banco_segundo = Banco.new("La caja")
+second_bank = Bank.new("La caja")
 
-cuenta_uno_uno = Cuenta.new("Jim Sinclair", banco_primero)
-cuenta_uno_dos = Cuenta.new("James Cameron", banco_primero)
+account_jim = Account.new("Jim Sinclair", first_bank)
+account_pam = Account.new("Pam Beesly", first_bank)
 
-cuenta_dos_uno = Cuenta.new("Emma Smith", banco_segundo)
-cuenta_dos_dos = Cuenta.new("Steven Spielberg", banco_segundo)
+account_emma = Account.new("Emma Smith", second_bank)
+account_steven = Account.new("Steven Spielberg", second_bank)
 
-cuenta_uno_dos.añadir_dinero(50000)
-cuenta_uno_dos.transferencia_interna(cuenta_uno_uno, 30000)
+puts "50000€ are added to Pam's account"
+account_pam.add_money(50000)
+puts "30000€ are transfered from Pam's account to Jim's account"
+account_pam.make_transfer(account_jim, 30000)
 
-cuenta_uno_uno.agente_de_transferencia(cuenta_dos_uno, 20000)
+puts "20000€ are transfered from Jim's account to Emma's account using transfer agent"
+account_jim.make_transfer_with_agent(account_emma, 20000)
 
-banco_primero.mostrar_historial_cuenta(cuenta_uno_uno)
+puts "Jim's historic is displayed"
+first_bank.show_account_historic(account_jim)
 
 
